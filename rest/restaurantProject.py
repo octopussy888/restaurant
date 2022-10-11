@@ -23,6 +23,7 @@ class DBHelper:
         self.cursor.execute(""" SELECT name FROM sqlite_master WHERE type='table' """)
         for i in self.cursor.fetchall():
             self.table_names.append(i[0])
+        print(self.table_names)
         self.choose_restaurant()
 
     def choose_restaurant(self):
