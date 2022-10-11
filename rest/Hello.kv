@@ -1,0 +1,65 @@
+<HelloGrid>
+    role: role
+
+    BoxLayout:
+        padding: (50, 50)
+        cols:1
+        size: root.width, root.height
+#        size_hint: 0.4, 0.3
+        pos_hint: {'center_x': 1, 'center_y': 1}
+        orientation: 'vertical'
+        background_color: (0.6, 0.776, 0.81, 1)
+        canvas.before:
+            Color:
+                rgba: self.background_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            padding: (0, 0)
+            height: '150dp'
+            pos_hint: {'center_x': 0.5, 'center_y': 0}
+            orientation: 'vertical'
+            BoxLayout:
+                Image:
+                    size_hint: (2, 2)
+                    source: 'undraw_cat_tbjm-removebg-preview.png'
+            BoxLayout:
+                Label:
+    #                text_size: 12
+                    padding: (10, 10)
+                    text: 'Hey! Nice to meet you :)\nPlease, choose your role!'
+
+        AnchorLayout:
+            padding: (0, 0)
+            size_hint: 1, 2
+            color:"#64BCA7"
+            orientation: 'vertical'
+
+            AnchorLayout:
+                Spinner:
+                    id: role
+                    padding: (10, 20)
+                    text: '<select>'
+                    values: ['Admin', 'User']
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    size_hint: None, None
+                    height: '5dp'
+                    weight: '20dp'
+                    background_normal:''
+                    background_color: '#5DBDB6'
+
+
+        BoxLayout:
+            padding: (150, 0)
+            Button:
+                text: 'Submit'
+                size_hint: None, None
+                height: '50dp'
+                weight: '75dp'
+                font_size: 25
+                background_normal: ''
+                background_color: '#5DBDB6'
+                on_press: root.sign_up()
+
