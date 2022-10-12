@@ -24,7 +24,8 @@ class DBHelper:
         for i in self.cursor.fetchall():
             self.table_names.append(i[0])
         print(self.table_names)
-        self.choose_restaurant()
+        self.register_client()
+        # self.choose_restaurant()
 
     def choose_restaurant(self):
         self.col_names = []
@@ -36,6 +37,11 @@ class DBHelper:
 
     def register_client(self):
         self.client.register_client()
+        self.cursor.execute(f""" INSERT INTO Clients VALUES 
+                                 ('{self.client.fullname}', '{self.client.c_phone}', '{self.client.c_address}',
+                                  '{self.client.c_mail}', '{self.client.c_password}') """)
+        self.conn.commit()
+        print(f"Hello, {self.client.c_name}!")
         # write clients' data to a db
 
 
