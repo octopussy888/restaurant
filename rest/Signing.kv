@@ -107,10 +107,8 @@ WindowManager:
 
     BoxLayout:
         padding: (50, 50)
+        spacing: 50
         cols:1
-#        size: (500, 700)
-#        size_hint: 0.4, 0.3
-#        pos_hint: {'center_x': 1, 'center_y': 1}
         orientation: 'vertical'
         background_color: (0.6, 0.776, 0.81, 1)
         canvas:
@@ -121,98 +119,92 @@ WindowManager:
                 size: self.size
 
         BoxLayout:
-            padding: (0, 0)
-            height: '150dp'
+            padding: 0, 25
+            spacing: 0
             pos_hint: {'center_x': 0.5, 'center_y': 0}
             orientation: 'vertical'
-            BoxLayout:
+            AnchorLayout:
                 Image:
-                    size_hint: (1.5, 1.5)
+                    size_hint: (1.2,1.2)
                     source: 'undraw_handcrafts_profile_info-removebg-preview.png'
-            BoxLayout:
-                Label:
-    #                text_size: 12
-#                    padding: (10, 10)
-                    text: 'Hey! Happy you here :)\nPlease, sign up'
+            Label:
+                text: 'Hey! Happy you here :)\nPlease, sign up'
 
         AnchorLayout:
             BoxLayout:
-                padding: (50, 0)
+                padding: (0, 25)
+                spacing: 20
                 size_hint: 1, 2
                 color:"#64BCA7"
                 orientation: 'vertical'
 
-                Label:
-                    text: 'First Name'
                 BoxLayout:
-                    padding: (10, 10)
                     size_hint: 1, None
-                    height: '50dp'
+                    height: '30dp'
+                    Label:
+                        text: 'First Name'
+
                     TextInput:
                         id: first_name
                         multiline:False
 
-                Label:
-                    text: 'Last Name'
                 BoxLayout:
-                    padding: (10, 10)
                     size_hint: 1, None
-                    height: '50dp'
+                    height: '30dp'
+                    Label:
+                        text: 'Last Name'
+
                     TextInput:
                         id: last_name
                         multiline:False
 
-                Label:
-                    text: 'Phone number'
                 BoxLayout:
-                    padding: (10, 10)
                     size_hint: 1, None
-                    height: '50dp'
+                    height: '30dp'
+                    Label:
+                        text: 'Phone number'
+
                     TextInput:
-                        id:phone
+                        id: phone
                         multiline:False
 
-                Label:
-                    text: 'Address'
                 BoxLayout:
-                    padding: (10, 10)
                     size_hint: 1, None
-                    height: '50dp'
+                    height: '30dp'
+                    Label:
+                        text: 'Address'
+
                     TextInput:
                         id: address
                         multiline:False
 
-                Label:
-                    text: 'E-mail (login)'
                 BoxLayout:
-                    padding: (10, 10)
                     size_hint: 1, None
-                    height: '50dp'
+                    height: '30dp'
+                    Label:
+                        text: 'E-mail'
+
                     TextInput:
                         id: mail
                         multiline:False
 
-                Label:
-                    text: 'Password'
                 BoxLayout:
-                    padding: (10, 10)
                     size_hint: 1, None
-                    height: '50dp'
+                    height: '30dp'
+                    Label:
+                        text: 'Password'
+
                     TextInput:
-                        id:password
+                        id: password
                         multiline:False
 
-        AnchorLayout:
+        BoxLayout:
             padding: (0, 0)
+            orientation: 'vertical'
             BoxLayout:
-                orientation: 'vertical'
-                BoxLayout:
-                    Label:
-                        padding: (10, 10)
-                        text: "Already signed up?"
+                Label:
+                    text: "Already signed up?"
                 AnchorLayout:
-                    padding: (0, 0)
-
                     Button:
                         text: 'Sign in'
                         color: 'blue'
@@ -225,13 +217,12 @@ WindowManager:
                             app.root.current='SignIn'
                             root.manager.transition.direction = 'left'
 
-        AnchorLayout:
+#        BoxLayout:
             Button:
                 text: 'Sign up'
                 padding: (0, 0)
                 size_hint: 0.5, 0.5
-#                height: '75dp'
-                pos_hint: {'center_x': 1}
+                pos_hint: {'center_x': 0.5}
                 font_size: 32
                 background_normal:''
                 background_color: '#64BCA7'
@@ -243,7 +234,8 @@ WindowManager:
     password:password
 
     BoxLayout:
-        padding: (50, 50)
+        padding: (100, 100)
+        spacing: 50
         cols:1
 #        size: (500, 700)
 #        size_hint: 0.4, 0.3
@@ -298,16 +290,14 @@ WindowManager:
                     id:password
                     multiline:False
 
-        AnchorLayout:
+        BoxLayout:
             padding: (0, 0)
+            orientation: 'vertical'
             BoxLayout:
-                orientation: 'vertical'
-                BoxLayout:
-                    Label:
-                        padding: (10, 10)
-                        text: "Not signed up yet?"
+                Label:
+                    padding: (10, 10)
+                    text: "Not signed up yet?"
                 AnchorLayout:
-                    padding: (0, 0)
                     Button:
                         text: 'Sign up'
                         color: 'blue'
@@ -320,13 +310,13 @@ WindowManager:
                             app.root.current='SignUp'
                             root.manager.transition.direction = 'right'
 
-        AnchorLayout:
+#        AnchorLayout:
             Button:
                 text: 'Sign in'
                 padding: (0, 0)
-                size_hint: None, None
-                height: '75dp'
-                pos_hint: {'center_x': 1}
+                size_hint: 0.5, 0.5
+                size: 1.5, 1.5
+                pos_hint: {'center_x': 0.5}
                 font_size: 32
                 background_normal:''
                 background_color: '#64BCA7'
