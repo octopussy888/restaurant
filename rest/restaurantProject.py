@@ -3,7 +3,7 @@ import sqlite3 as sql
 import os
 # from restaurants import Restaurant
 from clients import Client
-
+from SigningForms import SigningApp
 
 class DBHelper:
     def __init__(self):
@@ -36,11 +36,12 @@ class DBHelper:
         print(self.col_names)
 
     def register_client(self):
-        self.client.register_client()
-        self.cursor.execute(f""" INSERT INTO Clients VALUES 
-                                 ('{self.client.fullname}', '{self.client.c_phone}', '{self.client.c_address}',
-                                  '{self.client.c_mail}', '{self.client.c_password}') """)
-        self.conn.commit()
+
+        # self.cursor.execute(f""" INSERT INTO Clients VALUES
+        #                          ('{self.client.fullname}', '{self.client.c_phone}', '{self.client.c_address}',
+        #                           '{self.client.c_mail}', '{self.client.c_password}') """)
+        # self.conn.commit()
+        SigningApp().run()
         print(f"Hello, {self.client.c_name}!")
         # write clients' data to a db
 
