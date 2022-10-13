@@ -1,0 +1,333 @@
+WindowManager:
+    HelloWindow:
+    SignUpWindow:
+    SignInWindow:
+
+<HelloWindow>:
+    name: 'Hello'
+    role:role
+    BoxLayout:
+        padding: (200, 200)
+        cols:1
+        size: root.width, root.height
+        size_hint: 1, 1
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        orientation: 'vertical'
+        background_color: (0.6, 0.776, 0.81, 1)
+        canvas.before:
+            Color:
+                rgba: self.background_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            padding: (10, 10)
+#            height: '150dp'
+            pos_hint: {'center_x': 0.5, 'center_y': 0}
+            orientation: 'vertical'
+            BoxLayout:
+                Image:
+                    size_hint: (100, 10)
+#                    padding: (15, 0)
+                    source: 'undraw_cat_tbjm-removebg-preview.png'
+            AnchorLayout:
+                Label:
+        #                text_size: 12
+        #                    padding: (10, 10)
+                    text: 'Hey! Nice to meet you :)\nPlease, choose your role!'
+
+        AnchorLayout:
+            padding: (0, 0)
+            size_hint: 1, 2
+            color:"#64BCA7"
+            orientation: 'vertical'
+
+            AnchorLayout:
+                Spinner:
+                    id: role
+                    padding: (10, 20)
+                    text: '<select>'
+                    values: ['Admin', 'User']
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    size_hint: None, None
+                    height: '50dp'
+                    weight: '50dp'
+                    background_normal:''
+                    background_color: '#5DBDB6'
+
+
+        AnchorLayout:
+            padding: (0, 0)
+            size_hint: 1, 2
+            color:"#64BCA7"
+            orientation: 'vertical'
+
+            Button:
+                text: 'Sign up'
+#                color:
+                size_hint: None, None
+                height: '50dp'
+                weight: '75dp'
+                font_size: 25
+                background_normal: ''
+                background_color: '#5DBDB6'
+                on_release:
+                    on_press: root.submit_role()
+                    app.root.current = 'SignUp'
+                    root.manager.transition.direction = 'right'
+
+        AnchorLayout:
+            padding: (0, 0)
+            size_hint: 1, 2
+            color:"#64BCA7"
+            orientation: 'vertical'
+
+            Button:
+                text: 'Sign in'
+                size_hint: None, None
+                height: '50dp'
+                weight: '75dp'
+                font_size: 25
+                background_normal: ''
+                background_color: '#5DBDB6'
+                on_release:
+                    on_press: root.submit_role()
+                    app.root.current = 'SignIn'
+                    root.manager.transition.direction = 'left'
+
+<SignUpWindow>:
+    name: 'SignUp'
+    first_name:first_name
+    last_name:last_name
+    phone:phone
+    address:address
+    mail:mail
+    password:password
+
+    BoxLayout:
+        padding: (50, 50)
+        cols:1
+#        size: (500, 700)
+#        size_hint: 0.4, 0.3
+#        pos_hint: {'center_x': 1, 'center_y': 1}
+        orientation: 'vertical'
+        background_color: (0.6, 0.776, 0.81, 1)
+        canvas:
+            Color:
+                rgba: self.background_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            padding: (0, 0)
+            height: '150dp'
+            pos_hint: {'center_x': 0.5, 'center_y': 0}
+            orientation: 'vertical'
+            BoxLayout:
+                Image:
+                    size_hint: (1.5, 1.5)
+                    source: 'undraw_handcrafts_profile_info-removebg-preview.png'
+            BoxLayout:
+                Label:
+    #                text_size: 12
+#                    padding: (10, 10)
+                    text: 'Hey! Happy you here :)\nPlease, sign up'
+
+        AnchorLayout:
+            BoxLayout:
+                padding: (50, 0)
+                size_hint: 1, 2
+                color:"#64BCA7"
+                orientation: 'vertical'
+
+                Label:
+                    text: 'First Name'
+                BoxLayout:
+                    padding: (10, 10)
+                    size_hint: 1, None
+                    height: '50dp'
+                    TextInput:
+                        id: first_name
+                        multiline:False
+
+                Label:
+                    text: 'Last Name'
+                BoxLayout:
+                    padding: (10, 10)
+                    size_hint: 1, None
+                    height: '50dp'
+                    TextInput:
+                        id: last_name
+                        multiline:False
+
+                Label:
+                    text: 'Phone number'
+                BoxLayout:
+                    padding: (10, 10)
+                    size_hint: 1, None
+                    height: '50dp'
+                    TextInput:
+                        id:phone
+                        multiline:False
+
+                Label:
+                    text: 'Address'
+                BoxLayout:
+                    padding: (10, 10)
+                    size_hint: 1, None
+                    height: '50dp'
+                    TextInput:
+                        id: address
+                        multiline:False
+
+                Label:
+                    text: 'E-mail (login)'
+                BoxLayout:
+                    padding: (10, 10)
+                    size_hint: 1, None
+                    height: '50dp'
+                    TextInput:
+                        id: mail
+                        multiline:False
+
+                Label:
+                    text: 'Password'
+                BoxLayout:
+                    padding: (10, 10)
+                    size_hint: 1, None
+                    height: '50dp'
+                    TextInput:
+                        id:password
+                        multiline:False
+
+        AnchorLayout:
+            padding: (0, 0)
+            BoxLayout:
+                orientation: 'vertical'
+                BoxLayout:
+                    Label:
+                        padding: (10, 10)
+                        text: "Already signed up?"
+                AnchorLayout:
+                    padding: (0, 0)
+
+                    Button:
+                        text: 'Sign in'
+                        color: 'blue'
+                        size_hint: None, None
+                        height: '5dp'
+                        weight: '5dp'
+                        background_normal: ''
+                        background_color: (0.6, 0.776, 0.81, 1)
+                        on_release:
+                            app.root.current='SignIn'
+                            root.manager.transition.direction = 'left'
+
+        AnchorLayout:
+            Button:
+                text: 'Sign up'
+                padding: (0, 0)
+                size_hint: 0.5, 0.5
+#                height: '75dp'
+                pos_hint: {'center_x': 1}
+                font_size: 32
+                background_normal:''
+                background_color: '#64BCA7'
+                on_press: root.sign_up()
+
+<SignInWindow>:
+    name: 'SignIn'
+    mail:mail
+    password:password
+
+    BoxLayout:
+        padding: (50, 50)
+        cols:1
+#        size: (500, 700)
+#        size_hint: 0.4, 0.3
+#        pos_hint: {'center_x': 1, 'center_y': 1}
+        orientation: 'vertical'
+        background_color: (0.6, 0.776, 0.81, 1)
+        canvas:
+            Color:
+                rgba: self.background_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            padding: (0, 0)
+            height: '150dp'
+            pos_hint: {'center_x': 0.5, 'center_y': 0}
+            orientation: 'vertical'
+            BoxLayout:
+                Image:
+                    size_hint: (1.5, 1.5)
+                    source: 'undraw_handcrafts_profile_info-removebg-preview.png'
+            BoxLayout:
+                Label:
+    #                text_size: 12
+                    padding: (10, 10)
+                    text: 'Hey! Glad to see you :)\nPlease, sign in'
+
+        BoxLayout:
+            padding: (0, 0)
+            size_hint: 1, 2
+            color:"#64BCA7"
+            orientation: 'vertical'
+
+            Label:
+                text: 'E-mail (login)'
+            BoxLayout:
+                padding: (10, 10)
+                size_hint: 1, None
+                height: '50dp'
+                TextInput:
+                    id: mail
+                    multiline:False
+
+            Label:
+                text: 'Password'
+            BoxLayout:
+                padding: (10, 10)
+                size_hint: 1, None
+                height: '50dp'
+                TextInput:
+                    id:password
+                    multiline:False
+
+        AnchorLayout:
+            padding: (0, 0)
+            BoxLayout:
+                orientation: 'vertical'
+                BoxLayout:
+                    Label:
+                        padding: (10, 10)
+                        text: "Not signed up yet?"
+                AnchorLayout:
+                    padding: (0, 0)
+                    Button:
+                        text: 'Sign up'
+                        color: 'blue'
+                        size_hint: None, None
+                        height: '5dp'
+                        weight: '5dp'
+                        background_normal: ''
+                        background_color: (0.6, 0.776, 0.81, 1)
+                        on_release:
+                            app.root.current='SignUp'
+                            root.manager.transition.direction = 'right'
+
+        AnchorLayout:
+            Button:
+                text: 'Sign in'
+                padding: (0, 0)
+                size_hint: None, None
+                height: '75dp'
+                pos_hint: {'center_x': 1}
+                font_size: 32
+                background_normal:''
+                background_color: '#64BCA7'
+                on_press: root.sign_in()
