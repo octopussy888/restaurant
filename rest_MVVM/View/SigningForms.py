@@ -1,3 +1,7 @@
+from kivy.config import Config
+
+Config.set("graphics", "resizable", 0)
+
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.lang import Builder
@@ -31,6 +35,10 @@ class HelloWindow(Screen):
             client.role = self.role.text
         else:
             print('Please, choose your role first!')
+
+        if not self.ids.but_sub.disabled:
+            self.ids.but_s_in.disabled = False
+            self.ids.but_s_up.disabled = False
 
 
 class SignUpWindow(Screen):

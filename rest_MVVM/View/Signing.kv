@@ -22,20 +22,23 @@ WindowManager:
                 size: self.size
 
         BoxLayout:
-            padding: (10, 10)
-#            height: '150dp'
+            padding: (0, 10)
+            height: '150dp'
             pos_hint: {'center_x': 0.5, 'center_y': 0}
             orientation: 'vertical'
             BoxLayout:
                 Image:
-                    size_hint: (100, 10)
-#                    padding: (15, 0)
-                    source: 'undraw_cat_tbjm-removebg-preview.png'
-            AnchorLayout:
-                Label:
-        #                text_size: 12
-        #                    padding: (10, 10)
-                    text: 'Hey! Nice to meet you :)\nPlease, choose your role!'
+                    size_hint: None, None
+                    height: 100
+                    weight: 100
+                    padding: (0, 10)
+                    source: 'cat.png'
+
+        AnchorLayout:
+            Label:
+    #                text_size: 12
+                padding: (0, 15)
+                text: 'Hey! Nice to meet you :)\nPlease, choose your role!'
 
         AnchorLayout:
             padding: (0, 0)
@@ -46,8 +49,9 @@ WindowManager:
             AnchorLayout:
                 Spinner:
                     id: role
-                    padding: (10, 20)
+                    padding: (0, 10)
                     text: '<select>'
+                    font_size: 17
                     values: ['Admin', 'User']
                     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                     size_hint: None, None
@@ -56,43 +60,67 @@ WindowManager:
                     background_normal:''
                     background_color: '#5DBDB6'
 
-
         AnchorLayout:
             padding: (0, 0)
-            size_hint: 1, 2
+            size_hint: 1, 0.5
             color:"#64BCA7"
             orientation: 'vertical'
 
             Button:
-                text: 'Sign up'
+                id: but_sub
+                text: 'Submit role'
 #                color:
                 size_hint: None, None
                 height: '50dp'
                 weight: '75dp'
-                font_size: 25
+                font_size: 15
                 background_normal: ''
                 background_color: '#5DBDB6'
+                disabled: False
+                on_press: root.submit_role()
+
+
+        BoxLayout:
+            padding: (0, 0)
+            size_hint: 1, 2
+            pos_hint: {'center_x': 0.05}
+            color:"#64BCA7"
+            orientation: 'horizontal'
+
+            Button:
+                id: but_s_up
+                text: 'Sign up'
+#                color:
+                size_hint: None, None
+                height: '50dp'
+                weight: '100dp'
+                font_size: 20
+                background_normal: ''
+                background_color: (0.6, 0.776, 0.81, 1)
+                underline: True
+#                color: '#5DBDB6'
+                color: '#4AA9A2'
+                background_disabled_normal: ''
+                disabled: True
                 on_release:
-                    on_press: root.submit_role()
                     app.root.current = 'SignUp'
                     root.manager.transition.direction = 'right'
 
-        AnchorLayout:
-            padding: (0, 0)
-            size_hint: 1, 2
-            color:"#64BCA7"
-            orientation: 'vertical'
-
             Button:
+                id: but_s_in
                 text: 'Sign in'
                 size_hint: None, None
                 height: '50dp'
-                weight: '75dp'
-                font_size: 25
+                weight: '100dp'
+                font_size: 20
                 background_normal: ''
-                background_color: '#5DBDB6'
+                background_color: (0.6, 0.776, 0.81, 1)
+                underline: True
+#                color: '#5DBDB6'
+                color: '#4AA9A2'
+                background_disabled_normal: ''
+                disabled: True
                 on_release:
-                    on_press: root.submit_role()
                     app.root.current = 'SignIn'
                     root.manager.transition.direction = 'left'
 
