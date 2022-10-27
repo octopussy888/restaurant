@@ -11,19 +11,20 @@ from kivy.core.window import Window
 
 
 from Cross_platform.rest_MVVM.Model.clients import Client
+from Cross_platform.rest_MVVM.Model.admins import Admin
 import os
 import sqlite3 as sql
 
 BASE_DIR = r'C:\Users\Admin\PycharmProjects1\Cross_platform\rest_MVVM\Model'
 db_name = "restaurantProjectDB.db"
 db_path = os.path.join(BASE_DIR, db_name)
-print(db_path)
 conn = sql.connect(db_path, check_same_thread=False)
 cursor = conn.cursor()
 
 Window.size = (500, 700)
 
 client = Client()
+admin = Admin()
 
 
 class HelloWindow(Screen):
@@ -33,64 +34,119 @@ class HelloWindow(Screen):
         role = self.role.text
         if role == 'Admin' or role == 'User':
             client.role = self.role.text
+            print(f'Role "{role}" was chosen!')
+            self.ids.but_s_in.disabled = False
+            self.ids.but_s_up.disabled = False
         else:
             print('Please, choose your role first!')
 
-        if not self.ids.but_sub.disabled:
-            self.ids.but_s_in.disabled = False
-            self.ids.but_s_up.disabled = False
+    def s_up(self):
+        role = self.role.text
+        if role == 'Admin':
+            self.manager.current = 'SignUpAdmin'
+        elif role == 'User':
+            self.manager.current = 'SignUpClient'
+
+    def s_in(self):
+        role = self.role.text
+        if role == 'Admin':
+            self.manager.current = 'SignInAdmin'
+        elif role == 'User':
+            self.manager.current = 'SignInClient'
 
 
-class SignUpWindow(Screen):
-    first_name = ObjectProperty(None)
-    last_name = ObjectProperty(None)
-    phone = ObjectProperty(None)
-    address = ObjectProperty(None)
-    mail = ObjectProperty(None)
-    password = ObjectProperty(None)
+class SignUpClientWindow(Screen):
+    c_first_name = ObjectProperty(None)
+    c_last_name = ObjectProperty(None)
+    c_phone = ObjectProperty(None)
+    c_address = ObjectProperty(None)
+    c_mail = ObjectProperty(None)
+    c_password = ObjectProperty(None)
 
-    def sign_up(self):
-        first_name = self.first_name.text
-        last_name = self.last_name.text
-        phone = self.phone.text
-        address = self.address.text
-        mail = self.mail.text
-        password = self.password.text
-        if first_name == '' or last_name == '' or phone == '' \
-                or address == '' or mail == '' or password == '':
+    def sign_up_client(self):
+        c_first_name = self.c_first_name.text
+        c_last_name = self.c_last_name.text
+        c_phone = self.c_phone.text
+        c_address = self.c_address.text
+        c_mail = self.c_mail.text
+        c_password = self.c_password.text
+        if c_first_name == '' or c_last_name == '' or c_phone == '' \
+                or c_address == '' or c_mail == '' or c_password == '':
             print('You did not finish! ')
         else:
-            cursor.execute(''' SELECT MAX(IDClient) FROM Clients ''')
-            client.c_id = int(cursor.fetchall()[0][0])
-            client.c_id += 1
-            client.fullname = f'{first_name} {last_name}'
-            client.c_phone = phone
-            client.c_address = address
-            client.c_mail = mail
-            client.c_password = password
-            cursor.execute(f""" INSERT INTO Clients VALUES 
-                                             ({client.c_id}, '{client.fullname}', '{client.c_phone}', '{client.c_address}',
-                                              '{client.c_mail}', '{client.c_password}', '{client.role}') """)
-            conn.commit()
-            print(f'Hello, {client.fullname}!\n'
-                  f'Thanks for signing up :)')
+            client.fullname = f'{c_first_name} {c_last_name}'
+            client.c_phone = c_phone
+            client.c_address = c_address
+            client.c_mail = c_mail
+            client.c_password = c_password
+            client.register_client()
+            print('Successfully signed up!')
+            exit()
+
+class SignUpAdminWindow(Screen):
+    a_first_name = ObjectProperty(None)
+    a_last_name = ObjectProperty(None)
+    a_phone = ObjectProperty(None)
+    a_rest = ObjectProperty(None)
+    a_password = ObjectProperty(None)
+
+    def sign_up_admin(self):
+        a_first_name = self.a_first_name.text
+        a_last_name = self.a_last_name.text
+        a_phone = self.a_phone.text
+        a_rest = self.a_rest.text
+        a_password = self.a_password.text
+        if a_first_name == '' or a_last_name == '' or a_phone == '' \
+                or a_rest == '' or a_password == '':
+            print('You did not finish! ')
+        else:
+            admin.a_fullname = f'{a_first_name} {a_last_name}'
+            admin.a_phone = a_phone
+            admin.a_rest = a_rest
+            admin.a_password = a_password
+            if a_rest == 'Host':
+                admin.a_if_host = 1
+                admin.a_rest = None
+            admin.register_admin()
+            print('Successfully signed up!')
             exit()
 
 
-class SignInWindow(Screen):
-    mail = ObjectProperty(None)
-    password = ObjectProperty(None)
+class SignInClientWindow(Screen):
+    c_mail = ObjectProperty(None)
+    c_password = ObjectProperty(None)
 
-    def sign_in(self):
-        mail = self.mail.text
-        password = self.password.text
+    def sign_in_client(self):
+        c_mail = self.c_mail.text
+        c_password = self.c_password.text
 
-        cursor.execute(f""" SELECT * FROM Clients WHERE Email = '{mail}' AND Password = '{password}' """)
+        cursor.execute(f""" SELECT * FROM Clients WHERE Email = '{c_mail}' AND Password = '{c_password}' """)
         result = [i for i in cursor.fetchall()][0]
 
-        if mail == '' or password == '':
+        if c_mail == '' or c_password == '':
             print('You did not finish! ')
-        elif mail != result[4] or password != result[5]:
+        elif c_mail != result[4] or c_password != result[5]:
+            print("Login or password is wrong or you are not signed up:(")
+        else:
+            print("You signed in!")
+            exit()
+
+
+
+class SignInAdminWindow(Screen):
+    a_phone = ObjectProperty(None)
+    a_password = ObjectProperty(None)
+
+    def sign_in_admin(self):
+        a_phone = self.a_phone.text
+        a_password = self.a_password.text
+
+        cursor.execute(f""" SELECT * FROM Admins WHERE Email = '{a_phone}' AND Password = '{a_password}' """)
+        result = [i for i in cursor.fetchall()][0]
+
+        if a_phone == '' or a_password == '':
+            print('You did not finish! ')
+        elif a_phone != result[3] or a_password != result[4]:
             print("Login or password is wrong or you are not signed up:(")
         else:
             print("You signed in!")
@@ -101,12 +157,10 @@ class WindowManager(ScreenManager):
     pass
 
 
-kv = Builder.load_file('Signing.kv')
-
-
 class SigningApp(App):
     def build(self):
-        self.icon = 'icon.png'
+        kv = Builder.load_file(r'C:\Users\Admin\PycharmProjects1\Cross_platform\rest_MVVM\View\Signing.kv')
+        self.icon = r'C:\Users\Admin\PycharmProjects1\Cross_platform\rest_MVVM\View\icon.png'
         return kv
 
 

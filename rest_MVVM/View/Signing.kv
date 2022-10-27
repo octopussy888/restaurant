@@ -1,7 +1,9 @@
 WindowManager:
     HelloWindow:
-    SignUpWindow:
-    SignInWindow:
+    SignUpClientWindow:
+    SignUpAdminWindow:
+    SignInClientWindow:
+    SignInAdminWindow:
 
 <HelloWindow>:
     name: 'Hello'
@@ -32,7 +34,7 @@ WindowManager:
                     height: 100
                     weight: 100
                     padding: (0, 10)
-                    source: 'cat.png'
+                    source: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/cat.png'
 
         AnchorLayout:
             Label:
@@ -57,8 +59,8 @@ WindowManager:
                     size_hint: None, None
                     height: '50dp'
                     weight: '50dp'
-                    background_normal:''
-                    background_color: '#5DBDB6'
+                    background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/background.png'
+                    background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/down.png'
 
         AnchorLayout:
             padding: (0, 0)
@@ -74,8 +76,8 @@ WindowManager:
                 height: '50dp'
                 weight: '75dp'
                 font_size: 15
-                background_normal: ''
-                background_color: '#5DBDB6'
+                background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/background.png'
+                background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/down.png'
                 disabled: False
                 on_press: root.submit_role()
 
@@ -97,13 +99,15 @@ WindowManager:
                 font_size: 20
                 background_normal: ''
                 background_color: (0.6, 0.776, 0.81, 1)
+                background_down: ''
                 underline: True
 #                color: '#5DBDB6'
                 color: '#4AA9A2'
                 background_disabled_normal: ''
                 disabled: True
                 on_release:
-                    app.root.current = 'SignUp'
+#                    app.root.current = 'SignUp'
+                    on_press: root.s_up()
                     root.manager.transition.direction = 'right'
 
             Button:
@@ -115,23 +119,25 @@ WindowManager:
                 font_size: 20
                 background_normal: ''
                 background_color: (0.6, 0.776, 0.81, 1)
+                background_down: ''
                 underline: True
 #                color: '#5DBDB6'
                 color: '#4AA9A2'
                 background_disabled_normal: ''
                 disabled: True
                 on_release:
-                    app.root.current = 'SignIn'
+                    on_press: root.s_in()
+#                    app.root.current = 'SignIn'
                     root.manager.transition.direction = 'left'
 
-<SignUpWindow>:
-    name: 'SignUp'
-    first_name:first_name
-    last_name:last_name
-    phone:phone
-    address:address
-    mail:mail
-    password:password
+<SignUpClientWindow>:
+    name: 'SignUpClient'
+    c_first_name:c_first_name
+    c_last_name:c_last_name
+    c_phone:c_phone
+    c_address:c_address
+    c_mail:c_mail
+    c_password:c_password
 
     BoxLayout:
         padding: (50, 50)
@@ -154,7 +160,7 @@ WindowManager:
             AnchorLayout:
                 Image:
                     size_hint: (1.2,1.2)
-                    source: 'undraw_handcrafts_profile_info-removebg-preview.png'
+                    source: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/undraw_handcrafts_profile_info-removebg-preview.png'
             Label:
                 text: 'Hey! Happy you here :)\nPlease, sign up'
 
@@ -173,7 +179,7 @@ WindowManager:
                         text: 'First Name'
 
                     TextInput:
-                        id: first_name
+                        id: c_first_name
                         multiline:False
 
                 BoxLayout:
@@ -183,7 +189,7 @@ WindowManager:
                         text: 'Last Name'
 
                     TextInput:
-                        id: last_name
+                        id: c_last_name
                         multiline:False
 
                 BoxLayout:
@@ -193,7 +199,7 @@ WindowManager:
                         text: 'Phone number'
 
                     TextInput:
-                        id: phone
+                        id: c_phone
                         multiline:False
 
                 BoxLayout:
@@ -203,7 +209,7 @@ WindowManager:
                         text: 'Address'
 
                     TextInput:
-                        id: address
+                        id: c_address
                         multiline:False
 
                 BoxLayout:
@@ -213,7 +219,7 @@ WindowManager:
                         text: 'E-mail'
 
                     TextInput:
-                        id: mail
+                        id: c_mail
                         multiline:False
 
                 BoxLayout:
@@ -223,7 +229,7 @@ WindowManager:
                         text: 'Password'
 
                     TextInput:
-                        id: password
+                        id: c_password
                         multiline:False
 
         BoxLayout:
@@ -241,8 +247,9 @@ WindowManager:
                         weight: '5dp'
                         background_normal: ''
                         background_color: (0.6, 0.776, 0.81, 1)
+                        background_down: ''
                         on_release:
-                            app.root.current='SignIn'
+                            app.root.current='SignInClient'
                             root.manager.transition.direction = 'left'
 
 #        BoxLayout:
@@ -252,22 +259,22 @@ WindowManager:
                 size_hint: 0.5, 0.5
                 pos_hint: {'center_x': 0.5}
                 font_size: 32
-                background_normal:''
-                background_color: '#64BCA7'
-                on_press: root.sign_up()
+                background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/background.png'
+                background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/down.png'
+                on_press: root.sign_up_client()
 
-<SignInWindow>:
-    name: 'SignIn'
-    mail:mail
-    password:password
+<SignUpAdminWindow>:
+    name: 'SignUpAdmin'
+    a_first_name:a_first_name
+    a_last_name:a_last_name
+    a_phone:a_phone
+    a_rest:a_rest
+    a_password:a_password
 
     BoxLayout:
-        padding: (100, 100)
+        padding: (50, 50)
         spacing: 50
         cols:1
-#        size: (500, 700)
-#        size_hint: 0.4, 0.3
-#        pos_hint: {'center_x': 1, 'center_y': 1}
         orientation: 'vertical'
         background_color: (0.6, 0.776, 0.81, 1)
         canvas:
@@ -278,45 +285,174 @@ WindowManager:
                 size: self.size
 
         BoxLayout:
+            padding: 0, 25
+            spacing: 0
+            pos_hint: {'center_x': 0.5, 'center_y': 0}
+            orientation: 'vertical'
+            AnchorLayout:
+                Image:
+                    size_hint: (1.2,1.2)
+                    source: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/undraw_handcrafts_profile_info-removebg-preview.png'
+            Label:
+                text: 'Hey! Happy you here :)\nPlease, sign up'
+
+        AnchorLayout:
+            BoxLayout:
+                padding: (0, 25)
+                spacing: 20
+                size_hint: 1, 2
+                color:"#64BCA7"
+                orientation: 'vertical'
+
+                BoxLayout:
+                    size_hint: 1, None
+                    height: '30dp'
+                    Label:
+                        text: 'First Name'
+
+                    TextInput:
+                        id: a_first_name
+                        multiline:False
+
+                BoxLayout:
+                    size_hint: 1, None
+                    height: '30dp'
+                    Label:
+                        text: 'Last Name'
+
+                    TextInput:
+                        id: a_last_name
+                        multiline:False
+
+                BoxLayout:
+                    size_hint: 1, None
+                    height: '30dp'
+                    Label:
+                        text: 'Restaurant you from\n(or *Host)'
+
+                    TextInput:
+                        id: a_rest
+                        multiline:False
+
+                BoxLayout:
+                    size_hint: 1, None
+                    height: '30dp'
+                    Label:
+                        text: 'Phone number (Login)'
+
+                    TextInput:
+                        id: a_phone
+                        multiline:False
+
+                BoxLayout:
+                    size_hint: 1, None
+                    height: '30dp'
+                    Label:
+                        text: 'Password'
+
+                    TextInput:
+                        id: a_password
+                        multiline:False
+
+                Label:
+                    text: '* - for creators'
+
+        BoxLayout:
             padding: (0, 0)
-            height: '150dp'
+            orientation: 'vertical'
+            BoxLayout:
+                Label:
+                    text: "Already signed up?"
+                AnchorLayout:
+                    Button:
+                        text: 'Sign in'
+                        color: 'blue'
+                        size_hint: None, None
+                        height: '5dp'
+                        weight: '5dp'
+                        background_normal: ''
+                        background_color: (0.6, 0.776, 0.81, 1)
+                        background_down: ''
+                        on_release:
+                            app.root.current='SignInAdmin'
+                            root.manager.transition.direction = 'left'
+
+#        BoxLayout:
+            Button:
+                text: 'Sign up'
+                padding: (0, 0)
+                size_hint: 0.5, 0.5
+                pos_hint: {'center_x': 0.5}
+                font_size: 32
+                background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/background.png'
+                background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/down.png'
+                on_press: root.sign_up_admin()
+
+<SignInClientWindow>:
+    name: 'SignInClient'
+    c_mail:c_mail
+    c_password:c_password
+
+    BoxLayout:
+        padding: (100, 100)
+#        spacing: 50
+        cols:1
+        size: root.width, root.height
+        size_hint: 1, 1
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        orientation: 'vertical'
+        background_color: (0.6, 0.776, 0.81, 1)
+        canvas:
+            Color:
+                rgba: self.background_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+#            padding: (10,10)
+#            height: '300dp'
             pos_hint: {'center_x': 0.5, 'center_y': 0}
             orientation: 'vertical'
             BoxLayout:
                 Image:
-                    size_hint: (1.5, 1.5)
-                    source: 'undraw_handcrafts_profile_info-removebg-preview.png'
+                    size_hint: 0.75, 0.75
+#                    height: 100
+#                    weight: 100
+                    padding: (0, 10)
+                    source: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/undraw_handcrafts_profile_info-removebg-preview.png'
+
+        AnchorLayout:
+            Label:
+#                padding: (10, 10)
+                text: 'Hey! Glad to see you :)\nPlease, sign in'
+
+        AnchorLayout:
             BoxLayout:
+                padding: (0, 0)
+                size_hint: 1, 1
+                color:"#64BCA7"
+                orientation: 'vertical'
+
                 Label:
-    #                text_size: 12
+                    text: 'Phone (login)'
+                BoxLayout:
                     padding: (10, 10)
-                    text: 'Hey! Glad to see you :)\nPlease, sign in'
+                    size_hint: 1, None
+                    height: '50dp'
+                    TextInput:
+                        id: c_mail
+                        multiline:False
 
-        BoxLayout:
-            padding: (0, 0)
-            size_hint: 1, 2
-            color:"#64BCA7"
-            orientation: 'vertical'
-
-            Label:
-                text: 'E-mail (login)'
-            BoxLayout:
-                padding: (10, 10)
-                size_hint: 1, None
-                height: '50dp'
-                TextInput:
-                    id: mail
-                    multiline:False
-
-            Label:
-                text: 'Password'
-            BoxLayout:
-                padding: (10, 10)
-                size_hint: 1, None
-                height: '50dp'
-                TextInput:
-                    id:password
-                    multiline:False
+                Label:
+                    text: 'Password'
+                BoxLayout:
+                    padding: (10, 10)
+                    size_hint: 1, None
+                    height: '50dp'
+                    TextInput:
+                        id: c_password
+                        multiline:False
 
         BoxLayout:
             padding: (0, 0)
@@ -329,13 +465,12 @@ WindowManager:
                     Button:
                         text: 'Sign up'
                         color: 'blue'
-                        size_hint: None, None
-                        height: '5dp'
-                        weight: '5dp'
+                        size_hint: 0.5, 0.5
                         background_normal: ''
                         background_color: (0.6, 0.776, 0.81, 1)
+                        background_down: ''
                         on_release:
-                            app.root.current='SignUp'
+                            app.root.current='SignUpClient'
                             root.manager.transition.direction = 'right'
 
 #        AnchorLayout:
@@ -343,9 +478,107 @@ WindowManager:
                 text: 'Sign in'
                 padding: (0, 0)
                 size_hint: 0.5, 0.5
-                size: 1.5, 1.5
+                size: 1, 1
                 pos_hint: {'center_x': 0.5}
-                font_size: 32
-                background_normal:''
-                background_color: '#64BCA7'
-                on_press: root.sign_in()
+                font_size: 28
+                background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/background.png'
+                background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/down.png'
+                on_press: root.sign_in_client()
+
+
+<SignInAdminWindow>:
+    name: 'SignInAdmin'
+    a_phone:a_phone
+    a_password:a_password
+
+    BoxLayout:
+        padding: (100, 100)
+#        spacing: 50
+        cols:1
+        size: root.width, root.height
+        size_hint: 1, 1
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        orientation: 'vertical'
+        background_color: (0.6, 0.776, 0.81, 1)
+        canvas:
+            Color:
+                rgba: self.background_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+#            padding: (10,10)
+#            height: '300dp'
+            pos_hint: {'center_x': 0.5, 'center_y': 0}
+            orientation: 'vertical'
+            BoxLayout:
+                Image:
+                    size_hint: 0.75, 0.75
+#                    height: 100
+#                    weight: 100
+                    padding: (0, 10)
+                    source: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/undraw_handcrafts_profile_info-removebg-preview.png'
+
+        AnchorLayout:
+            Label:
+#                padding: (10, 10)
+                text: 'Hey! Glad to see you :)\nPlease, sign in'
+
+        AnchorLayout:
+            BoxLayout:
+                padding: (0, 0)
+                size_hint: 1, 1
+                color:"#64BCA7"
+                orientation: 'vertical'
+
+                Label:
+                    text: 'Phone (login)'
+                BoxLayout:
+                    padding: (10, 10)
+                    size_hint: 1, None
+                    height: '50dp'
+                    TextInput:
+                        id: a_phone
+                        multiline:False
+
+                Label:
+                    text: 'Password'
+                BoxLayout:
+                    padding: (10, 10)
+                    size_hint: 1, None
+                    height: '50dp'
+                    TextInput:
+                        id: a_password
+                        multiline:False
+
+        BoxLayout:
+            padding: (0, 0)
+            orientation: 'vertical'
+            BoxLayout:
+                Label:
+                    padding: (10, 10)
+                    text: "Not signed up yet?"
+                AnchorLayout:
+                    Button:
+                        text: 'Sign up'
+                        color: 'blue'
+                        size_hint: 0.5, 0.5
+                        background_normal: ''
+                        background_color: (0.6, 0.776, 0.81, 1)
+                        background_down: ''
+                        on_release:
+                            app.root.current='SignUpAdmin'
+                            root.manager.transition.direction = 'right'
+
+#        AnchorLayout:
+            Button:
+                text: 'Sign in'
+                padding: (0, 0)
+                size_hint: 0.5, 0.5
+                size: 1, 1
+                pos_hint: {'center_x': 0.5}
+                font_size: 28
+                background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/background.png'
+                background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/down.png'
+                on_press: root.sign_in_admin()

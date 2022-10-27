@@ -3,11 +3,14 @@ import sqlite3 as sql
 import os
 # from restaurants import Restaurant
 from clients import Client
-from SigningForms import SigningApp
+from admins import Admin
+import  Cross_platform.rest_MVVM.View as view
+from Cross_platform.rest_MVVM.View.SigningForms import SigningApp
 
 class DBHelper:
     def __init__(self):
         self.client = Client()
+        self.admin = Admin()
         self.BASE_DIR = os.path.dirname(os.path.abspath(__file__))
         self.db_name = "restaurantProjectDB.db"
         self.db_path = os.path.join(self.BASE_DIR, self.db_name)
@@ -24,7 +27,7 @@ class DBHelper:
         for i in self.cursor.fetchall():
             self.table_names.append(i[0])
         print(self.table_names)
-        self.register_client()
+        self.register()
         # self.choose_restaurant()
 
     def choose_restaurant(self):
@@ -33,16 +36,10 @@ class DBHelper:
         result = self.cursor.fetchall()
         for t in range(len(result)):
             self.col_names.append(result[t][1])
-        print(self.col_names)
 
-    def register_client(self):
-
-        # self.cursor.execute(f""" INSERT INTO Clients VALUES
-        #                          ('{self.client.fullname}', '{self.client.c_phone}', '{self.client.c_address}',
-        #                           '{self.client.c_mail}', '{self.client.c_password}') """)
-        # self.conn.commit()
-        SigningApp().run()
-        print(f"Hello, {self.client.c_name}!")
+    def register(self):
+        sign_app = SigningApp()
+        sign_app.run()
         # write clients' data to a db
 
 
