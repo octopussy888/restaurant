@@ -132,7 +132,6 @@ class SignInClientWindow(Screen):
             exit()
 
 
-
 class SignInAdminWindow(Screen):
     a_phone = ObjectProperty(None)
     a_password = ObjectProperty(None)
