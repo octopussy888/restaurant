@@ -12,19 +12,16 @@ from kivy.core.window import Window
 
 from Cross_platform.rest_MVVM.Model.clients import Client
 from Cross_platform.rest_MVVM.Model.admins import Admin
-import os
-import sqlite3 as sql
+from Cross_platform.rest_MVVM.ModelView.SignIn import SignIn
+from Cross_platform.rest_MVVM.ModelView.SignUp import SignUp
 
-BASE_DIR = r'C:\Users\Admin\PycharmProjects1\Cross_platform\rest_MVVM\Model'
-db_name = "restaurantProjectDB.db"
-db_path = os.path.join(BASE_DIR, db_name)
-conn = sql.connect(db_path, check_same_thread=False)
-cursor = conn.cursor()
 
 Window.size = (500, 700)
 
 client = Client()
 admin = Admin()
+sign_in = SignIn()
+sign_up = SignUp()
 
 
 class HelloWindow(Screen):
@@ -70,18 +67,7 @@ class SignUpClientWindow(Screen):
         c_address = self.c_address.text
         c_mail = self.c_mail.text
         c_password = self.c_password.text
-        if c_first_name == '' or c_last_name == '' or c_phone == '' \
-                or c_address == '' or c_mail == '' or c_password == '':
-            print('You did not finish! ')
-        else:
-            client.fullname = f'{c_first_name} {c_last_name}'
-            client.c_phone = c_phone
-            client.c_address = c_address
-            client.c_mail = c_mail
-            client.c_password = c_password
-            client.register_client()
-            print('Successfully signed up!')
-            exit()
+        sign_up.sign_up_client(c_first_name, c_last_name, c_phone, c_address, c_mail, c_password)
 
 class SignUpAdminWindow(Screen):
     a_first_name = ObjectProperty(None)
@@ -96,20 +82,7 @@ class SignUpAdminWindow(Screen):
         a_phone = self.a_phone.text
         a_rest = self.a_rest.text
         a_password = self.a_password.text
-        if a_first_name == '' or a_last_name == '' or a_phone == '' \
-                or a_rest == '' or a_password == '':
-            print('You did not finish! ')
-        else:
-            admin.a_fullname = f'{a_first_name} {a_last_name}'
-            admin.a_phone = a_phone
-            admin.a_rest = a_rest
-            admin.a_password = a_password
-            if a_rest == 'Host':
-                admin.a_if_host = 1
-                admin.a_rest = None
-            admin.register_admin()
-            print('Successfully signed up!')
-            exit()
+        sign_up.sign_up_admin(a_first_name, a_last_name, a_phone, a_rest, a_password)
 
 
 class SignInClientWindow(Screen):
@@ -120,16 +93,7 @@ class SignInClientWindow(Screen):
         c_mail = self.c_mail.text
         c_password = self.c_password.text
 
-        cursor.execute(f""" SELECT * FROM Clients WHERE Email = '{c_mail}' AND Password = '{c_password}' """)
-        result = [i for i in cursor.fetchall()][0]
-
-        if c_mail == '' or c_password == '':
-            print('You did not finish! ')
-        elif c_mail != result[4] or c_password != result[5]:
-            print("Login or password is wrong or you are not signed up:(")
-        else:
-            print("You signed in!")
-            exit()
+        sign_in.sign_in_client(c_mail, c_password)
 
 
 class SignInAdminWindow(Screen):
@@ -140,16 +104,7 @@ class SignInAdminWindow(Screen):
         a_phone = self.a_phone.text
         a_password = self.a_password.text
 
-        cursor.execute(f""" SELECT * FROM Admins WHERE Email = '{a_phone}' AND Password = '{a_password}' """)
-        result = [i for i in cursor.fetchall()][0]
-
-        if a_phone == '' or a_password == '':
-            print('You did not finish! ')
-        elif a_phone != result[3] or a_password != result[4]:
-            print("Login or password is wrong or you are not signed up:(")
-        else:
-            print("You signed in!")
-            exit()
+        sign_in.sign_in_admin(a_phone, a_password)
 
 
 class WindowManager(ScreenManager):
