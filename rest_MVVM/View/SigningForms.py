@@ -23,7 +23,7 @@ class WindowManager(ScreenManager):
 class SigningApp(App):
     def build(self):
         kv = Builder.load_file(r'C:\Users\Admin\PycharmProjects1\Cross_platform\rest_MVVM\View\Signing.kv')
-        self.icon = r'C:\Users\Admin\PycharmProjects1\Cross_platform\rest_MVVM\View\icon.png'
+        self.icon = r'C:\Users\Admin\PycharmProjects1\Cross_platform\rest_MVVM\View\pics\icon.png'
         return kv
 
 
