@@ -25,3 +25,12 @@ class Client:
                                                    self.c_mail, self.c_password)
         print(f'Hello, {self.fullname}!\n')
 
+    def change_password(self):
+        pass
+
+    def change_some_info(self):
+        pass
+
+    def delete_account(self):
+        pass
+

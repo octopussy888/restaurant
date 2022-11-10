@@ -21,7 +21,7 @@ class Order:
         self.o_datetime_end = dt.datetime.now() + dt.timedelta(hours=1)
         self.o_paid = False
 
-    def finish_order(self):
+    def delete_order(self):
         pass
 
     def pay_order(self):

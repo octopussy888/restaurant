@@ -16,6 +16,6 @@ class Menu:
     def _check_gen_name(self):
         pass
 
-    def search_menu(self):
-        self.dishes.display_dishes()
+    def view_more_info_about_dish(self):
+        self.dishes.display_info_about_dish()
 

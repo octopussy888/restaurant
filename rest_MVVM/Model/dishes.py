@@ -9,8 +9,6 @@ class Dishes:
         self.dishes = np.array([[]]).reshape(-1, 5)     # template: name, ingredient, weight, price, time to cook
         self.chosen_items = np.array([[]]).reshape(-1, 5)
 
-    def display_dishes(self):
+    def display_info_about_dish(self):
         pass
 
-    def check_chosen_items(self):
-        pass
