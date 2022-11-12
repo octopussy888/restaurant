@@ -582,3 +582,58 @@ WindowManager:
                 background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/background.png'
                 background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/down.png'
                 on_press: root.sign_in_admin()
+
+
+<MainWindow>:
+    name: 'MainScreen'
+
+    BoxLayout:
+        padding: (100, 100)
+#        spacing: 50
+        cols:1
+        size: root.width, root.height
+        size_hint: 1, 1
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        orientation: 'vertical'
+        background_color: (0.6, 0.776, 0.81, 1)
+        canvas:
+            Color:
+                rgba: self.background_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            BoxLayout:
+                Button:
+                    padding: (0, 0)
+                    size_hint: 0.5, 0.5
+                    size: 1, 1
+                    background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/menu_up.png'
+                    background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/menu_down.png'
+                    on_press: root.main_menu()
+
+                Button:
+                    padding: (0, 0)
+                    size_hint: 0.5, 0.5
+                    size: 1, 1
+                    background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/search_up.png'
+                    background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/search_down.png'
+                    on_press: root.search()
+
+                Button:
+                    padding: (0, 0)
+                    size_hint: 0.5, 0.5
+                    size: 1, 1
+                    background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/account_up.png'
+                    background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/account_down.png'
+                    on_press: root.account()
+
+            AnchorLayout:
+                Label:
+                    text: 'Hey!'
+                    font_size: '25dp'
+            AnchorLayout:
+                Label:
+                    text: 'Nice to see you again'
+                    font_size: '16dp'

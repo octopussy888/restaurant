@@ -33,4 +33,3 @@ class SignIn:
             print("Login or password is wrong. Please, try again!")
         else:
             print("You signed in!")
-            exit()

@@ -9,11 +9,12 @@ from kivy.core.window import Window
 
 Window.size = (500, 700)
 
-from Cross_platform.rest_MVVM.View.HelloWindowFrom import HelloWindow
-from Cross_platform.rest_MVVM.View.SignInAdminFrom import SignInAdminWindow
-from Cross_platform.rest_MVVM.View.SignUpAdminFrom import SignUpAdminWindow
+from Cross_platform.rest_MVVM.View.HelloWindowForm import HelloWindow
+from Cross_platform.rest_MVVM.View.SignInAdminForm import SignInAdminWindow
+from Cross_platform.rest_MVVM.View.SignUpAdminForm import SignUpAdminWindow
 from Cross_platform.rest_MVVM.View.SignInClientForm import SignInClientWindow
 from Cross_platform.rest_MVVM.View.SignUpClientForm import SignUpClientWindow
+from Cross_platform.rest_MVVM.View.MainScreenForm import MainWindow
 
 
 class WindowManager(ScreenManager):

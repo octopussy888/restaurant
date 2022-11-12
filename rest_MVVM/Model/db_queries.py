@@ -18,6 +18,7 @@ class DBHelper:
     def login_check_admin(self, a_phone, a_password):
         self.cursor.execute(f""" SELECT * FROM Admins WHERE Phone = '{a_phone}' AND Password = '{a_password}' """)
         l_a_result = [i for i in self.cursor.fetchall()]
+        print(l_a_result[0])
         return l_a_result[0]
 
     def find_restaurants(self):
