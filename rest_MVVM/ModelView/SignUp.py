@@ -19,7 +19,7 @@ class SignUp:
             self.client.c_password = c_password
             self.client.register_client()
             print('Successfully signed up!')
-            exit()
+            # exit()
 
     def sign_up_admin(self, a_first_name, a_last_name, a_phone, a_rest, a_password):
         if a_first_name == '' or a_last_name == '' or a_phone == '' \
@@ -35,4 +35,4 @@ class SignUp:
                 self.admin.a_rest = None
             self.admin.register_admin()
             print('Successfully signed up!')
-            exit()
+            # exit()

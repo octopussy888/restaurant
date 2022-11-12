@@ -262,6 +262,7 @@ WindowManager:
                 background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/background.png'
                 background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/down.png'
                 on_press: root.sign_up_client()
+                on_release: app.root.current='MainScreen'
 
 <SignUpAdminWindow>:
     name: 'SignUpAdmin'
@@ -387,6 +388,7 @@ WindowManager:
                 background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/background.png'
                 background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/down.png'
                 on_press: root.sign_up_admin()
+                on_release: app.root.current='MainScreen'
 
 <SignInClientWindow>:
     name: 'SignInClient'
@@ -484,6 +486,7 @@ WindowManager:
                 background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/background.png'
                 background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/down.png'
                 on_press: root.sign_in_client()
+                on_release: app.root.current='MainScreen'
 
 
 <SignInAdminWindow>:
@@ -582,9 +585,10 @@ WindowManager:
                 background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/background.png'
                 background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/down.png'
                 on_press: root.sign_in_admin()
+                on_release: app.root.current='MainScreen'
 
 
-<MainWindow>:
+<MainScreenWindow>:
     name: 'MainScreen'
 
     BoxLayout:

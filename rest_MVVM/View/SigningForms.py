@@ -14,7 +14,7 @@ from Cross_platform.rest_MVVM.View.SignInAdminForm import SignInAdminWindow
 from Cross_platform.rest_MVVM.View.SignUpAdminForm import SignUpAdminWindow
 from Cross_platform.rest_MVVM.View.SignInClientForm import SignInClientWindow
 from Cross_platform.rest_MVVM.View.SignUpClientForm import SignUpClientWindow
-from Cross_platform.rest_MVVM.View.MainScreenForm import MainWindow
+from Cross_platform.rest_MVVM.View.MainScreenForm import MainScreenWindow
 
 
 class WindowManager(ScreenManager):

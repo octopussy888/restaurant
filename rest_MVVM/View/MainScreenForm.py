@@ -5,7 +5,7 @@ from Cross_platform.rest_MVVM.Model.clients import Client
 client = Client()
 
 
-class MainWindow(Screen):
+class MainScreenWindow(Screen):
 
     def main_menu(self):
         pass

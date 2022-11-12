@@ -17,4 +17,4 @@ class SignInAdminWindow(Screen):
         a_password = self.a_password.text
 
         sign_in.sign_in_admin(a_phone, a_password)
-        self.manager.current = 'MainScreen'
+        # self.manager.current = 'MainScreen'
