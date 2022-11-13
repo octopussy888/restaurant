@@ -1,9 +1,16 @@
 WindowManager:
     HelloWindow:
+        name: 'Hello'
     SignUpClientWindow:
+        name: 'SignUpClient'
     SignUpAdminWindow:
+        name: 'SignUpAdmin'
     SignInClientWindow:
+        name: 'SignInClient'
     SignInAdminWindow:
+        name: 'SignInAdmin'
+    MainScreenWindow:
+        name: 'MainScreen'
 
 <HelloWindow>:
     name: 'Hello'
@@ -231,6 +238,7 @@ WindowManager:
                     TextInput:
                         id: c_password
                         multiline:False
+                        password: True
 
         BoxLayout:
             padding: (0, 0)
@@ -354,6 +362,7 @@ WindowManager:
                     TextInput:
                         id: a_password
                         multiline:False
+                        password:True
 
                 Label:
                     text: '* - for creators'
@@ -394,6 +403,7 @@ WindowManager:
     name: 'SignInClient'
     c_mail:c_mail
     c_password:c_password
+    lbl_sign_in:lbl_sign_in
 
     BoxLayout:
         padding: (100, 100)
@@ -426,6 +436,7 @@ WindowManager:
 
         AnchorLayout:
             Label:
+                id: lbl_sign_in
 #                padding: (10, 10)
                 text: 'Hey! Glad to see you :)\nPlease, sign in'
 
@@ -455,6 +466,7 @@ WindowManager:
                     TextInput:
                         id: c_password
                         multiline:False
+                        password: True
 
         BoxLayout:
             padding: (0, 0)
@@ -493,6 +505,7 @@ WindowManager:
     name: 'SignInAdmin'
     a_phone:a_phone
     a_password:a_password
+    lbl_sign_in: lbl_sign_in
 
     BoxLayout:
         padding: (100, 100)
@@ -525,6 +538,7 @@ WindowManager:
 
         AnchorLayout:
             Label:
+                id: lbl_sign_in
 #                padding: (10, 10)
                 text: 'Hey! Glad to see you :)\nPlease, sign in'
 
@@ -554,6 +568,7 @@ WindowManager:
                     TextInput:
                         id: a_password
                         multiline:False
+                        password:True
 
         BoxLayout:
             padding: (0, 0)
@@ -592,7 +607,7 @@ WindowManager:
     name: 'MainScreen'
 
     BoxLayout:
-        padding: (100, 100)
+        padding: (15, 15)
 #        spacing: 50
         cols:1
         size: root.width, root.height
@@ -608,35 +623,44 @@ WindowManager:
                 size: self.size
 
         BoxLayout:
+            padding:(0, 0)
+            pos_hint: {'y': 0.5}
             BoxLayout:
+                orientation: 'horizontal'
                 Button:
                     padding: (0, 0)
-                    size_hint: 0.5, 0.5
-                    size: 1, 1
+                    size_hint: 0.5, 0.3
+                    size: 0.3, 0.3
                     background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/menu_up.png'
                     background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/menu_down.png'
                     on_press: root.main_menu()
 
+                BoxLayout:
+                    padding:(50, 0)
+
                 Button:
                     padding: (0, 0)
-                    size_hint: 0.5, 0.5
-                    size: 1, 1
+                    size_hint: 0.5, 0.3
+                    size: 0.3, 0.3
                     background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/search_up.png'
                     background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/search_down.png'
                     on_press: root.search()
 
                 Button:
                     padding: (0, 0)
-                    size_hint: 0.5, 0.5
-                    size: 1, 1
+                    size_hint: 0.5, 0.3
+                    size: 0.3, 0.3
                     background_normal: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/account_up.png'
                     background_down: 'C:/Users/Admin/PycharmProjects1/Cross_platform/rest_MVVM/View/pics/account_down.png'
                     on_press: root.account()
 
+        BoxLayout:
+            orientation: 'vertical'
             AnchorLayout:
                 Label:
                     text: 'Hey!'
                     font_size: '25dp'
+
             AnchorLayout:
                 Label:
                     text: 'Nice to see you again'
