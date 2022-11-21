@@ -29,7 +29,7 @@ class SignIn:
             print('You did not finish! ')
         elif not l_a_result:
             print("There is no such admin. Please, check if you're signed up.")
-        elif a_password != l_a_result[4]:
+        elif a_password != l_a_result[0][4]:
             print("Login or password is wrong. Please, try again!")
         else:
             print("You signed in!")
